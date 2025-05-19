@@ -1,6 +1,10 @@
-
 // linkedLists.c
-#include "linkedLists.h"
+#include "Linkedlists.h"
+
+
+//-----------LINKEDLISTS FUNCTIONS------------
+
+// FUNCTION TO CREATE A NEW NODE: 
 
 LogEntry* createNode(int id, const char* timestamp, int severity, const char* message) {
     LogEntry* newNode = (LogEntry*)malloc(sizeof(LogEntry));
@@ -11,12 +15,14 @@ LogEntry* createNode(int id, const char* timestamp, int severity, const char* me
     newNode->next = NULL;
     return newNode;
 }
-
+// 1) FUNCTION TO INSERT NODE INTO A LINKEDLIST :
 LogEntry* insertAtBeginning(LogEntry* head, int id, const char* timestamp, int severity, const char* message) {
     LogEntry* newNode = createNode(id, timestamp, severity, message);
     newNode->next = head;
     return newNode;
 }
+
+// 2)FUNCTION TO INSERT NODE AT THE END OF A LINKEDLIST :
 
 LogEntry* insertAtEnd(LogEntry* head, int id, const char* timestamp, int severity, const char* message) {
     LogEntry* newNode = createNode(id, timestamp, severity, message);
@@ -26,6 +32,8 @@ LogEntry* insertAtEnd(LogEntry* head, int id, const char* timestamp, int severit
     temp->next = newNode;
     return head;
 }
+
+// 3)FUNCTION TO INSERT NODE BY POSITION INTO A  LINKED LIST :
 
 LogEntry* insertAtPosition(LogEntry* head, int position, int id, const char* timestamp, int severity, const char* message) {
     if (position <= 0) return insertAtBeginning(head, id, timestamp, severity, message);
@@ -37,6 +45,8 @@ LogEntry* insertAtPosition(LogEntry* head, int position, int id, const char* tim
     temp->next = newNode;
     return head;
 }
+
+// 4) FUNCTION TO DELETE NODE BY ID IN  LINKEDLIST:
 
 LogEntry* deleteByID(LogEntry* head, int id) {
     if (!head) return NULL;
@@ -55,6 +65,8 @@ LogEntry* deleteByID(LogEntry* head, int id) {
     return head;
 }
 
+// 5) FUNCTION TO  DELETE BY TIMESTAMP:
+
 LogEntry* deleteByTimestamp(LogEntry* head, const char* timestamp) {
     if (!head) return NULL;
     if (strcmp(head->timestamp, timestamp) == 0) {
@@ -72,12 +84,16 @@ LogEntry* deleteByTimestamp(LogEntry* head, const char* timestamp) {
     return head;
 }
 
+// 6) DELETE  THE FIRST NODE:
+
 LogEntry* deleteFirst(LogEntry* head) {
     if (!head) return NULL;
     LogEntry* temp = head->next;
     free(head);
     return temp;
 }
+
+ // 7) DELETE THE LAST NODE :
 
 LogEntry* deleteLast(LogEntry* head) {
     if (!head || !head->next) {
@@ -91,10 +107,14 @@ LogEntry* deleteLast(LogEntry* head) {
     return head;
 }
 
+ // 8) FUNCTION TO SEARCH IN LINKED LIST BY ID: 
+
 LogEntry* searchByID(LogEntry* head, int id) {
     while (head && head->id != id) head = head->next;
     return head;
 }
+ 
+ // 9) FUNCTION TO SEARCH IN LINKED LIST BY KEYWORD: 
 
 LogEntry* searchByKeyword(LogEntry* head, const char* keyword) {
     while (head) {
@@ -104,14 +124,19 @@ LogEntry* searchByKeyword(LogEntry* head, const char* keyword) {
     return NULL;
 }
 
+// 10) FUNCTION TO SEARCH BY TIMESTAMP IN A LINKED LIST :
+
 LogEntry* searchByTimestamp(LogEntry* head, const char* timestamp) {
     while (head && strcmp(head->timestamp, timestamp) != 0) head = head->next;
     return head;
 }
 
+// FUNCTION TO COMPARE BETWEEN TO TIMESTAMP:
 int compareTimestamps(const char* a, const char* b) {
     return strcmp(a, b); // Simple lexicographical comparison
 }
+
+// 11) FUNCTION TO SORT BY DATE A LINKED LIST :
 
 LogEntry* sortByDate(LogEntry* head) {
     if (!head || !head->next) return head;
@@ -130,6 +155,8 @@ LogEntry* sortByDate(LogEntry* head) {
     return head;
 }
 
+// 12) FUNCTION TO SORT A LINKED LIST BY SEVERITY :
+
 LogEntry* sortBySeverity(LogEntry* head) {
     if (!head || !head->next) return head;
     for (LogEntry* i = head; i && i->next; i = i->next) {
@@ -147,6 +174,8 @@ LogEntry* sortBySeverity(LogEntry* head) {
     return head;
 }
 
+// 13) FUNCTION TO REVERSE A LINKED LIST :
+
 LogEntry* reverseList(LogEntry* head) {
     LogEntry *prev = NULL, *curr = head, *next = NULL;
     while (curr) {
@@ -158,6 +187,7 @@ LogEntry* reverseList(LogEntry* head) {
     return prev;
 }
 
+// 14) FUNCTION TO COUNT NUMBER OF NODES I A LINKEDLIST:
 int countLogs(LogEntry* head) {
     int count = 0;
     while (head) {
@@ -166,3 +196,4 @@ int countLogs(LogEntry* head) {
     }
     return count;
 }
+
