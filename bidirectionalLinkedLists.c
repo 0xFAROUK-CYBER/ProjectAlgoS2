@@ -1,6 +1,9 @@
 // bidirectionalLinkedLists.c
 #include "bidirectionalLinkedLists.h"
 
+
+//----------BIDIRECTIONAL LINKEDLISTS FUNCTIONS------*
+
 DLogEntry* createDNode(int id, const char* timestamp, int severity, const char* message) {
     DLogEntry* newNode = (DLogEntry*)malloc(sizeof(DLogEntry));
     newNode->id = id;
