@@ -1,6 +1,8 @@
 // stacks.c
 #include "stacks.h"
 
+//----------BASIC STACKS FUNCTIONS-------*
+
 void initStack(Stack* stack) {
     stack->top = -1;
 }
