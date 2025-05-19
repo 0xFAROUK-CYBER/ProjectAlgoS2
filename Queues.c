@@ -1,6 +1,8 @@
 // queues.c
 #include "queues.h"
 
+//   *----------QUEUES BASIC FUNCTIONS---------*
+
 void initQueue(Queue* q) {
     q->front = 0;
     q->rear = -1;
