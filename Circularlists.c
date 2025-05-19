@@ -1,6 +1,10 @@
 // circularLists.c
 #include "circularLists.h"
 
+
+ //--------CIRCULAR LINKEDLIST FUNCTIONS-----------
+
+//FUNCTION TO CREATE NODE:
 CLogEntry* createCNode(int id, const char* timestamp, int severity, const char* message) {
     CLogEntry* newNode = (CLogEntry*)malloc(sizeof(CLogEntry));
     newNode->id = id;
@@ -10,6 +14,8 @@ CLogEntry* createCNode(int id, const char* timestamp, int severity, const char* 
     newNode->next = NULL;
     return newNode;
 }
+
+// 1) FUNCTION TO INSERT NODE INTO A CIRCULAR LINKED LIST :
 
 CLogEntry* insertCircular(CLogEntry* tail, int id, const char* timestamp, int severity, const char* message) {
     CLogEntry* newNode = createCNode(id, timestamp, severity, message);
@@ -21,6 +27,8 @@ CLogEntry* insertCircular(CLogEntry* tail, int id, const char* timestamp, int se
     tail->next = newNode;
     return newNode; // new tail
 }
+
+// 2)FUNCTION TO INSERT NODE BY POSITION INTO A CIRCULAR LINKED LIST :
 
 CLogEntry* insertAtPositionCircular(CLogEntry* tail, int position, int id, const char* timestamp, int severity, const char* message) {
     if (!tail || position <= 0) return insertCircular(tail, id, timestamp, severity, message);
@@ -34,6 +42,8 @@ CLogEntry* insertAtPositionCircular(CLogEntry* tail, int position, int id, const
     if (curr == tail) tail = newNode;
     return tail;
 }
+
+// 3) FUNCTION TO DELETE NODE BY ID IN CIRCULAR LINKEDLIST:
 
 CLogEntry* deleteByIDCircular(CLogEntry* tail, int id) {
     if (!tail) return NULL;
@@ -55,6 +65,8 @@ CLogEntry* deleteByIDCircular(CLogEntry* tail, int id) {
     return tail;
 }
 
+// 4) FUNCTION TO DELETE FIRST NODE OF A CIRCULAR LINKEDLIST:
+
 CLogEntry* deleteFirstCircular(CLogEntry* tail) {
     if (!tail) return NULL;
     CLogEntry* head = tail->next;
@@ -66,6 +78,8 @@ CLogEntry* deleteFirstCircular(CLogEntry* tail) {
     free(head);
     return tail;
 }
+
+//5) FUNCTION TO DELETE LAST NODE OF A CIRCULAR LINKEDLIST:
 
 CLogEntry* deleteLastCircular(CLogEntry* tail) {
     if (!tail) return NULL;
@@ -83,6 +97,8 @@ CLogEntry* deleteLastCircular(CLogEntry* tail) {
     return prev;
 }
 
+ // 6) FUNCTION TO SEARCH BY ID IN CIRCULAR LINKEDLIST :
+
 CLogEntry* searchByIDCircular(CLogEntry* tail, int id) {
     if (!tail) return NULL;
     CLogEntry* curr = tail->next;
@@ -92,6 +108,8 @@ CLogEntry* searchByIDCircular(CLogEntry* tail, int id) {
     } while (curr != tail->next);
     return NULL;
 }
+
+// 7) FUNCTION TO SEARCH NODE BY TIMESTAMP IN CIRCULARLIST:
 
 CLogEntry* searchByTimestampCircular(CLogEntry* tail, const char* timestamp) {
     if (!tail) return NULL;
@@ -103,6 +121,8 @@ CLogEntry* searchByTimestampCircular(CLogEntry* tail, const char* timestamp) {
     return NULL;
 }
 
+// 8) FUNCTION TO SEARCH NODE BY KEYWORD IN CIRCULAR LIST:
+
 CLogEntry* searchByKeywordCircular(CLogEntry* tail, const char* keyword) {
     if (!tail) return NULL;
     CLogEntry* curr = tail->next;
@@ -113,9 +133,13 @@ CLogEntry* searchByKeywordCircular(CLogEntry* tail, const char* keyword) {
     return NULL;
 }
 
+// "FUNCTION TO COMPARE TWO TIMESTAMP STRINGS :
+
 int compareCTimestamps(const char* a, const char* b) {
     return strcmp(a, b);
 }
+
+// 9) FUNCTION TO SORT CIRCULAR LIST BY TIMESTAMP :
 
 CLogEntry* sortByDateCircular(CLogEntry* tail) {
     if (!tail || tail->next == tail) return tail;
@@ -133,6 +157,8 @@ CLogEntry* sortByDateCircular(CLogEntry* tail) {
     return tail;
 }
 
+// 10) FUNCTION TO SORT CIRCULAR LIST BY SEVERITY LEVEL :
+
 CLogEntry* sortBySeverityCircular(CLogEntry* tail) {
     if (!tail || tail->next == tail) return tail;
     CLogEntry* start = tail->next;
@@ -149,6 +175,7 @@ CLogEntry* sortBySeverityCircular(CLogEntry* tail) {
     return tail;
 }
 
+// 11) FUNCTION TO REVERSE A CIRCULAR LIST :
 CLogEntry* reverseCircular(CLogEntry* tail) {
     if (!tail || tail->next == tail) return tail;
     CLogEntry *prev = tail, *curr = tail->next, *next;
@@ -162,6 +189,8 @@ CLogEntry* reverseCircular(CLogEntry* tail) {
     return curr;
 }
 
+// 12) FUNCTION TO COUNT NODES IN A CIRCULAR LIST :
+
 int countLogsCircular(CLogEntry* tail) {
     if (!tail) return 0;
     int count = 0;
@@ -173,6 +202,8 @@ int countLogsCircular(CLogEntry* tail) {
     return count;
 }
 
+// 13) PROCEDURE TO PRINT ALL NODES OF A CIRCULAR LIST:
+
 void traverseCircular(CLogEntry* tail) {
     if (!tail) return;
     CLogEntry* temp = tail->next;
@@ -181,6 +212,8 @@ void traverseCircular(CLogEntry* tail) {
         temp = temp->next;
     } while (temp != tail->next);
 }
+
+// 14) FUNCTION TO MAINTAIN FIXED SIZE CIRCULAR BUFFER:
 
 CLogEntry* createFixedSizeBuffer(CLogEntry* tail, int id, const char* timestamp, int severity, const char* message, int* size) {
     if (*size < MAX_LOGS) {
@@ -196,6 +229,9 @@ CLogEntry* createFixedSizeBuffer(CLogEntry* tail, int id, const char* timestamp,
     }
     return tail;
 }
+
+
+// 15) FUNCTION TO DETECT IF THERE IS A CYCLE IN A CIRCULAR LIST :
 
 int detectCycle(CLogEntry* head) {
     if (!head) return 0;
