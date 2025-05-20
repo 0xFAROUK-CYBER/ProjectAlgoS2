@@ -1,5 +1,5 @@
 // circularListTest.c
-#include "circularLists.h"
+#include "CircularLists.h"
 #include <ctype.h>
 
 void displayMenu() {

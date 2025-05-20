@@ -1,5 +1,5 @@
 // queueTest.c
-#include "queues.h"
+#include "Queues.h"
 #include <ctype.h>
 
 void displayMenu() {

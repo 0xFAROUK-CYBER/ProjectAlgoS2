@@ -1,5 +1,5 @@
 // queues.c
-#include "queues.h"
+#include "Queues.h"
 
 //   *----------QUEUES BASIC FUNCTIONS---------*
 

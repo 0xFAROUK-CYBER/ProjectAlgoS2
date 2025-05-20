@@ -50,6 +50,6 @@ TTree* insertTree(TTree *root, WordData data);
 int countVowels(const char *word);
 TStack* popStack(TStack **stk);
 int compareWords(const char *a, const char *b);
-
+int sizeBST(TTree *tr);
 #endif
 

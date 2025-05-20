@@ -1,5 +1,5 @@
 // circularLists.c
-#include "circularLists.h"
+#include "CircularLists.h"
 
 
  //--------CIRCULAR LINKEDLIST FUNCTIONS-----------

@@ -1,0 +1,14 @@
+stacks2: gcc stack2test.c stack2.c -o stack_program
+         ./stack_program
+
+BST2: gcc binarySearchTrees2test.c binarySearchTrees2.c -o bst_program
+      ./bst_program
+
+
+
+
+
+
+
+
+
