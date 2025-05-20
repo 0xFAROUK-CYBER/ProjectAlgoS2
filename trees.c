@@ -1,6 +1,10 @@
 // trees.c
 #include "trees.h"
 
+
+//------------PART 1 TREES FUNCTIONS----------*
+
+
 TLogEntry* createTNode(int id, const char* timestamp, int severity, const char* message) {
     TLogEntry* newNode = (TLogEntry*)malloc(sizeof(TLogEntry));
     newNode->id = id;
