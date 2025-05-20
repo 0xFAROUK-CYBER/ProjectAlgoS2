@@ -1,4 +1,4 @@
-// queue2test.c
+
 #include "queueLLL2.h"
 #include <stdio.h>
 #include <stdlib.h>
