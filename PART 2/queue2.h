@@ -1,5 +1,5 @@
-#ifndef QUEUE2_H
-#define QUEUE2_H
+#ifndef QUEUE2LLL_H
+#define QUEUE2LLL_H
 
 #include <stdio.h>
 #include <stdlib.h>
